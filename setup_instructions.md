@@ -27,7 +27,7 @@ cd builder-portfolio-management
 
 ### 3️⃣ Database Setup
 
-1. Create a new database in MySQL:
+1. Create a new database in PostgreSQL:
 
    ```sql
    CREATE DATABASE builder_portfolio_db;
@@ -69,7 +69,7 @@ Update the `application.properties` (or `application.yml`) file in `src/main/res
 
 ---
 
-✅ Your project should now be up and running!
+✅ The project should now be up and running!
 
 ---
 s

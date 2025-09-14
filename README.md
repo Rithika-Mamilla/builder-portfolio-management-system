@@ -1,7 +1,7 @@
 # Builder Portfolio Management System
 
 ## 📖 Overview
-The **Builder Portfolio Management System** is a Java & MySQL-based application designed to help builders manage multiple projects.  
+The **Builder Portfolio Management System** is a Java & PostgreSQL-based application designed to help builders manage multiple projects.  
 It enables:
 - Project creation and assignment
 - Manager allocation
@@ -34,6 +34,6 @@ It enables:
 - **Java** (Core, JDBC)
 - **PostgreSQL** (Database)
 - **Maven** (Build Tool)
-- **JUnit + Mockito** (Unit Testing)
+- **JUnit** (Unit Testing)
 
 ---
