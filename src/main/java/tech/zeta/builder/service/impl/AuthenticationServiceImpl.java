@@ -4,6 +4,8 @@ import tech.zeta.builder.dao.UserDAO;
 import tech.zeta.builder.model.User;
 import tech.zeta.builder.service.AuthenticationService;
 
+import java.util.logging.Logger;
+
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserDAO userDAO;

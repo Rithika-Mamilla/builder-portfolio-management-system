@@ -173,7 +173,7 @@ public class Main {
                         break;
                     case 5:
                         projectId = inputProjectId();
-                        System.out.println("Enter file name: ");
+                        System.out.print("Enter file name: ");
                         String filename = input.nextLine();
                         System.out.print("Upload file (path): ");
                         String filepath = input.nextLine();

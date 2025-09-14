@@ -4,9 +4,13 @@ import tech.zeta.builder.model.User;
 import tech.zeta.builder.util.DBUtil;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserDAO {
     private Connection connection;
+    private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
+
     public UserDAO() {
         this.connection = DBUtil.getConnection();
     }
@@ -51,7 +55,7 @@ public class UserDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return null;
     }
@@ -68,7 +72,7 @@ public class UserDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }

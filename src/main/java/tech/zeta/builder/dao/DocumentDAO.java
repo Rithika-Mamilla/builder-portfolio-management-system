@@ -7,19 +7,31 @@ import tech.zeta.builder.util.DBUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DocumentDAO {
     private Connection connection;
+    private static final Logger logger = Logger.getLogger(DocumentDAO.class.getName());
 
     public DocumentDAO() {
         this.connection = DBUtil.getConnection();
     }
 
     public boolean saveDocument(ProjectDocument document) throws ProjectNotFoundException {
+        String checkProjectSql = "SELECT id FROM projects WHERE id=?";
         String sql = "INSERT INTO documents (project_id, file_name, file_path) VALUES (?, ?, ?)";
         try {
             if (connection != null) {
-                PreparedStatement statement = connection.prepareStatement(sql);
+                PreparedStatement statement = connection.prepareStatement(checkProjectSql);
+                statement.setInt(1, document.getProjectId());
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if(!resultSet.next()) {
+                        throw new ProjectNotFoundException("Project with ID: " + document.getProjectId()+ " not found!");
+                    }
+                }
+                statement = connection.prepareStatement(sql);
+                statement = connection.prepareStatement(sql);
                 statement.setInt(1, document.getProjectId());
                 statement.setString(2, document.getName());
                 statement.setString(3, document.getPath());
@@ -30,7 +42,7 @@ public class DocumentDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -62,7 +74,7 @@ public class DocumentDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return documents;
     }

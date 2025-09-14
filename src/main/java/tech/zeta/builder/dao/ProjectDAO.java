@@ -7,9 +7,12 @@ import tech.zeta.builder.util.DBUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProjectDAO {
     private Connection connection;
+    private static final Logger logger = Logger.getLogger(ProjectDAO.class.getName());
 
     public ProjectDAO() {
         this.connection = DBUtil.getConnection();
@@ -40,7 +43,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return -1;
     }
@@ -61,7 +64,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -84,7 +87,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -108,7 +111,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -131,7 +134,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -155,7 +158,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -178,7 +181,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return false;
     }
@@ -199,7 +202,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return projects;
     }
@@ -219,7 +222,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return null;
     }
@@ -237,7 +240,7 @@ public class ProjectDAO {
                 }
             }
         } catch (SQLException sqlException) {
-            System.err.println(sqlException.getMessage());
+            logger.log(Level.SEVERE, sqlException.getMessage());
         }
         return true;
     }
