@@ -25,6 +25,7 @@ public class ProjectServiceImpl implements ProjectService {
         this.documentDAO = new DocumentDAO();
     }
 
+    // Add new project
     @Override
     public int addProject(String name, String description, int builderId, int clientId) throws InvalidUserException {
         if (!userDAO.checkUser(clientId)) {
@@ -45,21 +46,25 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDAO.addProject(project);
     }
 
+    // Assign project manager to project
     @Override
     public boolean assignManager(int projectId, int builderId, int managerId) throws ProjectNotFoundException {
         return projectDAO.assignManager(projectId, builderId, managerId);
     }
 
+    // View all the projects
     @Override
     public List<Project> viewProjects(int userId) {
         return projectDAO.getProjectsByUserId(userId);
     }
 
+    // View project details bi projectId
     @Override
     public Project viewProjectDetails(int userId, int projectId) throws ProjectNotFoundException {
         return projectDAO.getProjectById(projectId);
     }
 
+    // Budget vs Expenses Tracking
     @Override
     public void trackBudget(int userId, int projectId) throws ProjectNotFoundException {
         Project project = projectDAO.getProjectById(projectId);
@@ -90,6 +95,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
     }
 
+    // Project Timeline by projectId
     @Override
     public void viewTimeline(int userId, int projectId) throws ProjectNotFoundException {
         Project project = projectDAO.getProjectById(projectId);
@@ -116,37 +122,44 @@ public class ProjectServiceImpl implements ProjectService {
         }
     }
 
+    // View all project documents of a project 
     @Override
     public List<ProjectDocument> viewProjectDocuments(int userId, int projectId) throws ProjectNotFoundException{
         return documentDAO.getDocumentsByProjectId(projectId);
     }
 
+    // Update the status of project
     @Override
     public boolean updateStatus(int projectId, int managerId, String status) throws ProjectNotFoundException {
         return projectDAO.updateStatus(projectId, managerId, status);
     }
 
+    // Upload project documents
     @Override
     public boolean uploadDocuments(int projectId, int managerId, String filename, String filepath) throws ProjectNotFoundException {
         ProjectDocument document = new ProjectDocument(projectId, filename, filepath);
         return documentDAO.saveDocument(document);
     }
 
+    // Update the project budget
     @Override
     public boolean updateBudget(int projectId, int managerId, double budget) throws ProjectNotFoundException {
         return projectDAO.updateBudget(projectId, managerId, budget);
     }
 
+    // Update the project expenses
     @Override
     public boolean updateExpenses(int projectId, int managerId, double expense) throws ProjectNotFoundException {
         return projectDAO.updateExpenses(projectId, managerId, expense);
     }
 
+    // Update the project timeline
     @Override
     public boolean updateTimeline(int projectId, int managerId, Date startDate, Date endDate) throws ProjectNotFoundException {
         return projectDAO.updateTimeline(projectId, managerId, startDate, endDate);
     }
 
+    // Update the project progress
     @Override
     public boolean updateProgress(int projectId, int managerId, double progress) throws ProjectNotFoundException {
         Project project = projectDAO.getProjectById(projectId);
