@@ -14,10 +14,12 @@ public class DocumentDAO {
     private Connection connection;
     private static final Logger logger = Logger.getLogger(DocumentDAO.class.getName());
 
+    // Database Connection
     public DocumentDAO() {
         this.connection = DBUtil.getConnection();
     }
 
+    // Saves Document Details into the Database
     public boolean saveDocument(ProjectDocument document) throws ProjectNotFoundException {
         String checkProjectSql = "SELECT id FROM projects WHERE id=?";
         String sql = "INSERT INTO documents (project_id, file_name, file_path) VALUES (?, ?, ?)";
@@ -47,6 +49,7 @@ public class DocumentDAO {
         return false;
     }
 
+    // Retrieves the Project Documents based on projectId
     public List<ProjectDocument> getDocumentsByProjectId(int projectId) throws ProjectNotFoundException {
         List<ProjectDocument> documents = new ArrayList<>();
         String checkProjectSql = "SELECT id FROM projects WHERE id=?";
