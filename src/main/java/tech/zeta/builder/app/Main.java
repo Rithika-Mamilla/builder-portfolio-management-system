@@ -24,7 +24,8 @@ public class Main {
 
         input = new Scanner(System.in);
         boolean exit = false;
-
+        
+        // Main Menu
         while(!exit){
             try {
                 System.out.println("\n==== Builder Portfolio Management System ====");
@@ -46,6 +47,7 @@ public class Main {
         input.close();
     }
 
+    // Login Menu
     public static void loginMenu() {
         try {
             System.out.println("\n------- Login Menu -------");
@@ -80,6 +82,8 @@ public class Main {
 
     }
 
+
+    // Builder Menu
     public static void builderMenu(int builderId) {
         boolean logout = false;
         while (!logout) {
@@ -127,6 +131,7 @@ public class Main {
         }
     }
 
+    // Project Manager Menu
     public static void managerMenu(int managerId) {
         boolean logout = false;
         while (!logout) {
@@ -218,6 +223,7 @@ public class Main {
         }
     }
 
+    // Client Menu
     public static void clientMenu(int clientId) {
         boolean logout = false;
         while (!logout) {
