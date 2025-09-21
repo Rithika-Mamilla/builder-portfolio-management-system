@@ -14,6 +14,7 @@ public class ProjectDAO {
     private Connection connection;
     private static final Logger logger = Logger.getLogger(ProjectDAO.class.getName());
 
+    // Database Connection
     public ProjectDAO() {
         this.connection = DBUtil.getConnection();
     }
@@ -227,6 +228,7 @@ public class ProjectDAO {
         return null;
     }
 
+    // Check whether the project is present
     private boolean checkProject(int projectId) throws ProjectNotFoundException {
         String checkProjectSql = "SELECT id FROM projects WHERE id=?";
         try {
