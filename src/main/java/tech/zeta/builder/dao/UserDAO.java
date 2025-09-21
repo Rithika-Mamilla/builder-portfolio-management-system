@@ -11,10 +11,12 @@ public class UserDAO {
     private Connection connection;
     private static final Logger logger = Logger.getLogger(UserDAO.class.getName());
 
+    // Database Connection
     public UserDAO() {
         this.connection = DBUtil.getConnection();
     }
 
+    // Add new user
     public int saveUser(User user) {
         String sql = "INSERT INTO users(name, email, password, role) VALUES (?, ?, ?, ?)";
         try {
@@ -37,6 +39,7 @@ public class UserDAO {
         return -1;
     }
 
+    // Get the user using email
     public User getUserByEmail(String email) {
         String sql = "SELECT * FROM users WHERE email=?";
         try {
@@ -60,6 +63,7 @@ public class UserDAO {
         return null;
     }
 
+    // Check whether the user exists
     public boolean checkUser(int id) {
         String sql = "SELECT * FROM users WHERE id=?";
         try {
